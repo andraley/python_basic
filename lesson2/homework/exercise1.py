@@ -10,7 +10,6 @@ from sys import argv
 _, surname, name, hours, salary_rate, bonus = argv  #Присваение переменым значения из терминала
 
 
-
 def salary (surname: str, name: str, hours: int, salary_rate: float, bonus: int) -> dict :
     """Растчитывет заработную плату сотрудника
 
