@@ -29,32 +29,23 @@ class Date:
         :param date: str
         :return:
         """
+
+
+
+
         list_numbers = list(map(int, (date.split('-'))))
 
-        if list_numbers[1] < 1 or list_numbers[1] > 12:
-            raise ValueError('Ошибка при вводе месяца')
-        if list_numbers[2] < 0:
-            raise ValueError('Ошибка при вводе года')
-        if list_numbers[0] < 1:
-            raise ValueError('Ошибка при вводе дня')
-        if list_numbers[1] == 2:
-
-            if list_numbers[0] > 29:
-                raise ValueError('Ошибка при вводе дня')
-            if list_numbers[2]%4 and list_numbers[0] > 28:
-                    raise ValueError('Ошибка при вводе дня')
-
-        if list_numbers[1] in [1, 3, 5, 7, 8, 10 ,12]:
-            if list_numbers[0] > 31:
-                raise ValueError('Ошибка при вводе дня')
-        else:
-            if list_numbers[0] > 30:
-                raise ValueError('Ошибка при вводе дня')
+        dict = {list_numbers[1] < 1 or list_numbers[1] > 12: 'Ошибка при вводе месяца',
+                list_numbers[2] < 0: 'Ошибка при вводе года',
+                list_numbers[0] < 1 or (list_numbers[0] > 29 or list_numbers[2]%4 and list_numbers[0] > 28) if list_numbers[1] == 2
+                                        else list_numbers[0] > 31 if list_numbers[1] in (1, 3, 5, 7, 8, 10 ,12)
+                                                                  else list_numbers[0] > 30: 'Ошибка при вводе дня'}
+        print(dict.get(True,'Дата верна'))
 
 
-a = Date('10-11-2008')
+a = Date('11-11-2008')
 print(Date.numbers_date('10-11-2008'))
-a.check_date('10-11-2008')
+a.check_date('29-2-2008')
 
 
 

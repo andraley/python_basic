@@ -49,7 +49,7 @@ class Storage:
         """
         name = name.lower()
         if not name in cls.__diveces_dict.keys() \
-            or amount < 0 or amount * 10 % 10 or not type(direction) is str:
+            or amount < 0 or amount * 10 % 10 or not isinstance(direction, str):
             raise DeviceError
         if cls.__diveces_dict[name] - amount >= 0:
             cls.__diveces_dict[name] = cls.__diveces_dict[name] - amount

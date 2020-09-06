@@ -16,24 +16,27 @@
 """
 
 class CheckingListError(Exception):
+    def __init__(self, text):
+        self.text =text
 
-    @staticmethod
-    def checklist()->list:
-        """Проверка вводимых пользользователем чисел и создание списка из них
-        :return list:
-        """
-        user_list=[]
-        print('Введите числа.\nДля прекращение ввода введите "stop".\n')
-        while True:
-            new_number = input('Для прекращение ввода введите "stop".\n')
-            if new_number.isdigit():
-                user_list.append(int(new_number))
-            elif new_number == 'stop':
-                return user_list
-            else:
-                print('Вы ошиблись при введении числа.')
 
-print(CheckingListError.checklist())
+user_list=[]
+print('Введите числа.')
+while True:
+    new_number = input('Для прекращение ввода введите "stop".\n')
+    try:
+        if new_number.isdigit():
+            user_list.append(int(new_number))
+        elif new_number == 'stop':
+            print(user_list)
+            break
+        else:
+            raise CheckingListError('Вы ошиблись в воде числа.')
+    except CheckingListError as text:
+        print(text)
+
+
+
 
 
 
