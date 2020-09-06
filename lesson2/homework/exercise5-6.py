@@ -65,7 +65,7 @@ class Storage:
     @staticmethod
     def create_storage_log():
         """Создание лога перемещения оборудования"""
-        with open('storage_log.txt', 'w', encoding='UTF-8') as file_log:
+        with open('storage_log.txt', 'a', encoding='UTF-8') as file_log:
             for tmp in Storage.__storage_log:
                 file_log.write(f'{tmp}\n')
 
